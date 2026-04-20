@@ -101,7 +101,7 @@ const skills = [
     casttime: 0,
     desc: "Produce soft embers stopping on the first ally hit, healing them",
     prereqs: ["fire_1"],
-    icon: "assets/kindle1.PNG",
+    icon: "assets/kindlenice.PNG",
     x: 1850,
     y: 1150
   },
@@ -186,7 +186,7 @@ const skills = [
     casttime: 0,
     desc: "Kick in the direction last pressed dealing 10 damage",
     prereqs: [],
-    icon: "assets/Wind_Shear_kicks.PNG",
+    icon: "assets/Wind_Shear_Kicks.PNG",
     x: 1450,
     y: 2200
   },
@@ -288,7 +288,7 @@ const skills = [
     casttime: 1,
     desc: "Throw an anchor at mouse location, if collides with another player pulls them. Otherwise pulls you.",
     prereqs: ["Current Slash"],
-    icon: "assets/Undertow.PNG",
+    icon: "assets/undertow.PNG",
     x: 1825,
     y: 2700
   },
