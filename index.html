@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Elementalist | Skill Tree</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="text/javascript" src="scripts.js" defer></script>
+</head>
+
+<body>
+  <div id="tree-container">
+    <div id="filter-buttons">
+      <button class="filter-btn" data-element="all">All</button>
+      <button class="filter-btn" data-element="Fire">Fire</button>
+      <button class="filter-btn" data-element="Earth">Earth</button>
+      <button class="filter-btn" data-element="Water">Water</button>
+      <button class="filter-btn" data-element="Air">Air</button>
+    </div>
+    <div id="tree-canvas">
+      <div class="element-glow" style="background: #ff4422; top: 1200px; left: 1700px;"></div>
+      <div class="element-glow" style="background: #ddaa22; top: 1800px; left: 1200px;"></div>
+      <div class="element-glow" style="background: #2266ff; top: 2200px; left: 1700px;"></div>
+      <div class="element-glow" style="background: #22ddbb; top: 1800px; left: 2200px;"></div>
+      <svg id="skill-lines" width="4000" height="4000" style="position: absolute; top: 0; left: 0;">
+      </svg>
+      <img src="assets/elemental-gods.png" id="elemental-gods" />
+    </div>
+  </div>
+  <div id="side-panel">
+    <div id="panel-header">
+      <img id="skill-icon" src="" width="48" height="48" />
+      <div>
+        <p id="skill-element">Pyromancy</p>
+        <h2 id="skill-name">Skill Name</h2>
+      </div>
+    </div>
+    <h3>Stats</h3>
+    <p id="skill-damage">Damage: 30</p>
+    <p id="skill-cooldown">Cooldown: 0</p>
+    <p id="skill-stamina">Stamina: 14</p>
+    <p id="skill-range">Range: 20</p>
+    <p id="skill-impact">Impact: 1</p>
+    <p id="skill-casttime">CastTime: 1</p>
+    <h3>Description</h3>
+    <p id="skill-desc">Description</p>
+  </div>
+  <div id="level-modal">
+    <div id="modal-content">
+      <h2>Create Your Build</h2>
+      <p>Enter your level to receive skill points</p>
+      <input type="number" id="level-input" min="1" max="50" placeholder="Enter level..." />
+      <button id="modal-submit">Start</button>
+    </div>
+  </div>
+</body>
+
+<div id="title-card">
+  <h1>Elementalist Skill Catalog</h1>
+  <h3>Created by Phoenix Afschar</h3>
+  <button id="start-build">Start Build</button>
+  <p id="skill-points" style="display: none;">Skill Points: 0</p>
+  <button id="reset-build" style="display: none;">Reset</button>
+</div>
+
+</html>

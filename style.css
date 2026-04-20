@@ -1,0 +1,251 @@
+@font-face {
+  font-family: 'Dumbledore';
+  src: url('assets/dum1.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Dumbledore', serif;
+}
+
+body {
+  background: #0a0a0f;
+  overflow: hidden;
+  cursor: grab;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+
+body:active {
+  cursor: grabbing;
+}
+
+#tree-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#tree-canvas {
+  position: absolute;
+  width: 4000px;
+  height: 4000px;
+}
+
+#elemental-gods {
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  height: auto;
+}
+
+#side-panel {
+  position: fixed;
+  display: none;
+  width: 350px;
+  background: rgba(10, 10, 20, 0.95);
+  color: white;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 100;
+  font-family: serif;
+}
+
+#panel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+#side-panel h2 {
+  font-size: 26px;
+  margin-bottom: 4px;
+}
+
+#side-panel h3 {
+  font-size: 26px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 12px;
+  margin-bottom: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+}
+
+#side-panel p {
+  font-size: 20px;
+  margin-bottom: 4px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#skill-element {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+}
+
+#skill-desc {
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.skill-node {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.skill-node img {
+  pointer-events: none;
+}
+
+#filter-buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 50;
+  display: flex;
+  gap: 8px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  background: rgba(20, 20, 35, 0.9);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-btn:hover {
+  background: rgba(40, 40, 60, 0.9);
+}
+
+#title-card {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 50;
+  color: white;
+  font-family: 'Dumbledore', serif;
+}
+
+#title-card h1 {
+  font-size: 40px;
+  margin-bottom: 4px;
+}
+
+#title-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#tree-canvas::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 1200px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#level-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+}
+
+#level-modal.open {
+  display: flex;
+}
+
+#modal-content {
+  background: #1a1a2e;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  text-align: center;
+}
+
+#modal-content h2 {
+  margin-bottom: 8px;
+}
+
+#modal-content p {
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+#level-input {
+  width: 200px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#modal-submit {
+  padding: 8px 24px;
+  background: rgba(20, 20, 35, 0.9);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#tree-canvas.build-mode .skill-node img {
+  filter: grayscale(100%);
+}
+
+#tree-canvas.build-mode .skill-node.unlocked img {
+  filter: grayscale(0%);
+}
+
+#start-build,
+#reset-build {
+  padding: 10px 24px;
+  font-size: 16px;
+  background: rgba(20, 20, 35, 0.9);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+#start-build:hover,
+#reset-build:hover {
+  background: rgba(40, 40, 60, 0.9);
+}
