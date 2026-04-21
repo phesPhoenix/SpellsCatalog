@@ -249,3 +249,13 @@ body:active {
 #reset-build:hover {
   background: rgba(40, 40, 60, 0.9);
 }
+
+#tree-canvas.build-mode #skill-lines line {
+  stroke: gray;
+  opacity: 0.3;
+}
+
+#tree-canvas.build-mode #skill-lines line.unlocked {
+  stroke: white;
+  opacity: 1;
+}

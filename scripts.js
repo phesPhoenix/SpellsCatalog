@@ -419,8 +419,6 @@ let skillPoints = 0;
 const unlockedSkills = new Set();
 let scale = 0.5;
 let isDragging = false;
-let startX = 0;
-let startY = 0;
 let offsetX = (window.innerWidth / 2) - (canvas.offsetWidth / 2);
 let offsetY = (window.innerHeight / 2) - (canvas.offsetHeight / 2);
 let buildMode = false;
@@ -434,7 +432,7 @@ container.addEventListener("mousedown", function (event) {
 
   isDragging = true;
   event.stopPropagation();
-});
+}); 
 document.getElementById("start-build").addEventListener("click", function () {
   document.getElementById("level-modal").style.display = "flex";
 
@@ -458,6 +456,9 @@ document.getElementById("reset-build").addEventListener("click", function () {
     node.classList.remove("unlocked");
 
   });
+  document.querySelectorAll("#skill-lines line").forEach(function(line) {
+  line.classList.remove("unlocked");
+});
   canvas.classList.remove("build-mode");
   buildMode = false;
 })
@@ -531,6 +532,24 @@ function renderSkills() {
       skillPoints--;
       document.getElementById("skill-points").textContent = "Skill Points: " + skillPoints;
       node.classList.add("unlocked");
+      document.querySelectorAll("#skill-lines line").forEach(function(line) {
+      const element = line.getAttribute("data-element");
+      const x1 = Number(line.getAttribute("x1"));
+      const y1 = Number(line.getAttribute("y1"));
+      const x2 = Number(line.getAttribute("x2"));
+      const y2 = Number(line.getAttribute("y2"));
+      
+      const fromSkill = skills.find(function(s) {
+        return s.x + 32 === x1 && s.y + 32 === y1;
+      });
+      const toSkill = skills.find(function(s) {
+        return s.x + 32 === x2 && s.y + 32 === y2;
+      });
+      
+      if (fromSkill && toSkill && unlockedSkills.has(fromSkill.id) && unlockedSkills.has(toSkill.id)) {
+        line.classList.add("unlocked");
+      }
+  });
     });
 
 
